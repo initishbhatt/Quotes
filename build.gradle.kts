@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         classpath(Libs.androidGradlePlugin)
         classpath(Libs.Kotlin.gradlePlugin)
+        classpath(Libs.Hilt.gradlePlugin)
     }
 }
 
@@ -27,7 +28,8 @@ allprojects {
             target("**/*.kt")
             targetExclude("$buildDir/**/*.kt")
             targetExclude("bin/**/*.kt")
-            ktlint(Libs.ktLintVersion)
+            targetExclude("buildSrc/**/*.kt")
+            ktlint(Libs.ktLintVersion).userData(mapOf("android" to "true"))
         }
     }
 }
