@@ -14,6 +14,9 @@ object Libs {
             const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
             const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
         }
+        object Serialization {
+            const val kotlinxSerializationJson = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
+        }
     }
 
     object Accompanist {
@@ -61,10 +64,17 @@ object Libs {
             const val core = "androidx.test:core:$version"
             const val runner = "androidx.test:runner:$version"
             const val rules = "androidx.test:rules:$version"
+            const val archCoreTest = "androidx.arch.core:core-testing:2.1.0"
+            const val kotlinJunitTest = "org.jetbrains.kotlin:kotlin-test-junit:1.6.0"
 
             object Ext {
                 private const val version = "1.1.3"
                 const val junit = "androidx.test.ext:junit-ktx:$version"
+            }
+
+            object Mockito {
+                const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+                const val mockitoInline = "org.mockito:mockito-inline:4.2.0"
             }
 
             const val espressoCore = "androidx.test.espresso:espresso-core:3.4.0"

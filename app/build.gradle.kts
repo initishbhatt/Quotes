@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    kotlin("plugin.serialization") version "1.6.10"
 }
 android {
     compileSdk = Libs.App.compileSdkVersion
@@ -58,8 +60,9 @@ android {
 dependencies {
     implementation(Libs.Kotlin.stdlib)
     implementation(Libs.Kotlin.Coroutines.android)
-
     implementation(Libs.Kotlin.Coroutines.core)
+    implementation(Libs.Kotlin.Serialization.kotlinxSerializationJson)
+
 
     implementation(Libs.AndroidX.coreKtx)
 
@@ -76,9 +79,20 @@ dependencies {
     implementation(Libs.AndroidX.Compose.animation)
     implementation(Libs.AndroidX.Compose.tooling)
 
-    implementation (Libs.Accompanist.insets)
-    implementation (Libs.Accompanist.systemuicontroller)
-    implementation (Libs.Accompanist.flowlayouts)
+    implementation(Libs.Accompanist.insets)
+    implementation(Libs.Accompanist.systemuicontroller)
+    implementation(Libs.Accompanist.flowlayouts)
+
+    implementation(Libs.Hilt.android)
+    kapt(Libs.Hilt.compiler)
+
+    implementation(Libs.Timber.timber)
+
+    testImplementation(Libs.Kotlin.Coroutines.test)
+    testImplementation(Libs.AndroidX.Test.kotlinJunitTest)
+    testImplementation(Libs.AndroidX.Test.Mockito.mockitoKotlin)
+    testImplementation(Libs.AndroidX.Test.Mockito.mockitoInline)
+    testImplementation(Libs.AndroidX.Test.archCoreTest)
 
     androidTestImplementation(Libs.AndroidX.Compose.uiTest)
     androidTestImplementation(Libs.AndroidX.Test.rules)
