@@ -1,4 +1,4 @@
-package com.template.ui.theme
+package com.quotes.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

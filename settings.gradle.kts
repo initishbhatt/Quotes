@@ -1,2 +1,2 @@
-rootProject.name = "template"
+rootProject.name = "quotes"
 include(":app")

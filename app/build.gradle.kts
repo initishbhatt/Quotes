@@ -38,35 +38,47 @@ android {
         resValues = false
         shaders = false
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-        useIR = true
-    }
+
     packagingOptions {
-       resources.excludes.add("/META-INF/AL2.0")
+        resources.excludes.add("/META-INF/AL2.0")
         resources.excludes.add("/META-INF/LGPL2.1")
     }
 
     composeOptions {
         kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.version
     }
+
 }
 
 dependencies {
     implementation(Libs.Kotlin.stdlib)
+    implementation(Libs.Kotlin.Coroutines.android)
+
+    implementation(Libs.Kotlin.Coroutines.core)
+
+    implementation(Libs.AndroidX.coreKtx)
 
     implementation(Libs.AndroidX.Activity.activityCompose)
+    implementation(Libs.AndroidX.Lifecycle.viewModelCompose)
+    implementation(Libs.AndroidX.Navigation.navigationCompose)
+
+    implementation(Libs.AndroidX.Compose.ui)
     implementation(Libs.AndroidX.Compose.runtime)
     implementation(Libs.AndroidX.Compose.foundation)
     implementation(Libs.AndroidX.Compose.material)
+    implementation(Libs.AndroidX.Compose.materialIcons)
     implementation(Libs.AndroidX.Compose.layout)
     implementation(Libs.AndroidX.Compose.animation)
     implementation(Libs.AndroidX.Compose.tooling)
-    implementation(Libs.AndroidX.Lifecycle.viewModelCompose)
+
+    implementation (Libs.Accompanist.insets)
+    implementation (Libs.Accompanist.systemuicontroller)
+    implementation (Libs.Accompanist.flowlayouts)
 
     androidTestImplementation(Libs.AndroidX.Compose.uiTest)
     androidTestImplementation(Libs.AndroidX.Test.rules)
