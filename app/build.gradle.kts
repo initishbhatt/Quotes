@@ -82,6 +82,7 @@ dependencies {
     implementation(Libs.Accompanist.insets)
     implementation(Libs.Accompanist.systemuicontroller)
     implementation(Libs.Accompanist.flowlayouts)
+    implementation(Libs.Accompanist.navAnimation)
 
     implementation(Libs.Hilt.android)
     kapt(Libs.Hilt.compiler)
