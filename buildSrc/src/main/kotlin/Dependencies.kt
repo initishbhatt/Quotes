@@ -24,6 +24,7 @@ object Libs {
         const val insets = "com.google.accompanist:accompanist-insets:$version"
         const val systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:$version"
         const val flowlayouts = "com.google.accompanist:accompanist-flowlayout:$version"
+        const val navAnimation = "com.google.accompanist:accompanist-navigation-animation:$version"
     }
 
     object AndroidX {
