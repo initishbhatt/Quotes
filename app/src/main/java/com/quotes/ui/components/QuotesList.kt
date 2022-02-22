@@ -2,7 +2,6 @@ package com.quotes.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,35 +19,40 @@ import androidx.compose.material.icons.filled.FormatQuote
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.quotes.data.model.Quotes
+import com.quotes.R
+import com.quotes.data.model.Quote
 
 /**
  * @author nitishbhatt
  */
 @Composable
-fun QuotesView(quotes: List<Quotes>, paddingValues: PaddingValues, onClick: (Quotes) -> Unit) {
+fun QuotesView(quotes: List<Quote>, paddingValues: PaddingValues) {
     LazyColumn(contentPadding = paddingValues) {
         items(quotes) { quote ->
-            QuotesBox(quotes = quote, onClick)
+            QuotesBox(quote = quote)
         }
     }
 }
 
 @Composable
-fun QuotesBox(quotes: Quotes, onClick: (Quotes) -> Unit) {
+fun QuotesBox(quote: Quote) {
     Column(
         modifier = Modifier
             .wrapContentSize()
-            .clickable { onClick(quotes) }
             .padding(16.dp)
             .background(MaterialTheme.colors.secondary)
             .padding(16.dp)
     ) {
 
-        Image(imageVector = Icons.Default.FormatQuote, contentDescription = "Quote")
+        Image(
+            imageVector = Icons.Default.FormatQuote,
+            contentDescription =
+            stringResource(R.string.quote)
+        )
 
-        Text(text = quotes.en)
+        Text(text = quote.en)
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -64,7 +68,7 @@ fun QuotesBox(quotes: Quotes, onClick: (Quotes) -> Unit) {
 
         Box(modifier = Modifier.fillMaxSize()) {
             Text(
-                text = quotes.author,
+                text = quote.author,
                 modifier = Modifier.align(Alignment.CenterEnd)
             )
         }

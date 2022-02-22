@@ -1,7 +1,7 @@
 package com.quotes.data.repository
 
 import android.content.res.AssetManager
-import com.quotes.data.model.Quotes
+import com.quotes.data.model.Quote
 import java.nio.charset.Charset
 import javax.inject.Inject
 import kotlinx.serialization.decodeFromString
@@ -14,7 +14,7 @@ class AssetManagerUseCase @Inject constructor(
     private val assetManager: AssetManager,
     private val json: Json
 ) {
-    fun fetchQuotesList(assetName: String): List<Quotes> {
+    fun fetchQuotesList(assetName: String): List<Quote> {
         val jsonString = assetManager.open(assetName).bufferedReader(Charset.defaultCharset()).use {
             it.readText()
         }

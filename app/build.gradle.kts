@@ -39,6 +39,14 @@ android {
         renderScript = false
         resValues = false
         shaders = false
+
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi"
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=androidx.compose.foundation.ExperimentalFoundationApi"
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=androidx.compose.ui.ExperimentalComposeUiApi"
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=androidx.compose.animation.ExperimentalAnimationApi"
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=androidx.compose.animation.graphics.ExperimentalAnimationGraphicsApi"
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlinx.serialization.ExperimentalSerializationApi"
+        kotlinOptions.freeCompilerArgs += "-Xopt-in=com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi"
     }
 
     compileOptions {
@@ -85,9 +93,14 @@ dependencies {
     implementation(Libs.Accompanist.navAnimation)
 
     implementation(Libs.Hilt.android)
+    implementation(Libs.Hilt.navigationCompose)
     kapt(Libs.Hilt.compiler)
 
     implementation(Libs.Timber.timber)
+
+    implementation(Libs.AndroidX.Room.room)
+    implementation(Libs.AndroidX.Room.roomKtx)
+    kapt(Libs.AndroidX.Room.roomCompiler)
 
     testImplementation(Libs.Kotlin.Coroutines.test)
     testImplementation(Libs.AndroidX.Test.kotlinJunitTest)

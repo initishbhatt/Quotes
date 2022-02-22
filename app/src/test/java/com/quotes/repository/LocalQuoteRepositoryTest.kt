@@ -18,7 +18,7 @@ import org.junit.Test
  * @author nitishbhatt
  */
 @ExperimentalCoroutinesApi
-class LocalQuotesRepositoryTest {
+class LocalQuoteRepositoryTest {
     @get:Rule
     var coroutineRule = MainCoroutineRule()
 
@@ -32,7 +32,7 @@ class LocalQuotesRepositoryTest {
             .thenReturn(TestData.getQuotesMockData())
         val expected = TestData.getQuotesMockData()
 
-        val result = repository.getAllQuotes()
+        val result = repository.getRandomQuote()
 
         assertEquals(Success(expected).value, (result as Success).value)
     }
@@ -45,7 +45,7 @@ class LocalQuotesRepositoryTest {
                 throw exception
             }
 
-        val result = repository.getAllQuotes()
+        val result = repository.getRandomQuote()
 
         assertEquals(exception.message, (result as Failure).reason.message)
     }
