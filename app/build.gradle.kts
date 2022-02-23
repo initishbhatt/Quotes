@@ -107,6 +107,7 @@ dependencies {
     testImplementation(Libs.AndroidX.Test.Mockito.mockitoKotlin)
     testImplementation(Libs.AndroidX.Test.Mockito.mockitoInline)
     testImplementation(Libs.AndroidX.Test.archCoreTest)
+    testImplementation(Libs.AndroidX.Test.turbine)
 
     androidTestImplementation(Libs.AndroidX.Compose.uiTest)
     androidTestImplementation(Libs.AndroidX.Test.rules)
