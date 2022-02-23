@@ -12,8 +12,8 @@ data class BottomNavigationItem(val route: String, val icon: ImageVector, val ti
 
 val bottomNavigationItems = listOf(
     BottomNavigationItem(
-        Screen.QuotesList.title,
-        Icons.Default.FormatQuote, "Quotes"
+        Screen.Quote.title,
+        Icons.Default.FormatQuote, "Quote"
     ),
     BottomNavigationItem(
         Screen.FavouriteQuotes.title,

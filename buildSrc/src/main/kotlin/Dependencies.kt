@@ -1,6 +1,6 @@
 object Libs {
     const val ktLintVersion = "0.43.2"
-    const val androidGradlePlugin = "com.android.tools.build:gradle:7.1.0"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:7.1.1"
     const val ktLint = "com.pinterest:ktlint:$ktLintVersion"
 
     object Kotlin {
@@ -99,6 +99,7 @@ object Libs {
         const val android = "com.google.dagger:hilt-android:$version"
         const val compiler = "com.google.dagger:hilt-compiler:$version"
         const val testing = "com.google.dagger:hilt-android-testing:$version"
+        const val navigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0"
     }
 
     object JUnit {
