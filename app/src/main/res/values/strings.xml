@@ -4,4 +4,11 @@
     <string name="quote">Quote</string>
     <string name="refresh">Refresh</string>
     <string name="share">Share</string>
+    <string name="swipe_to_delete">delete</string>
+    <string name="no_quotes">No quotes added to the Favourites</string>
+    <string name="add_quotes">You can add the quotes from the quotes section</string>
+    <string name="empty">empty</string>
+    <string name="error">error</string>
+    <string name="error_text">Something went wrong. Please try again.</string>
+    <string name="retry">Retry</string>
 </resources>

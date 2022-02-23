@@ -27,7 +27,7 @@ class FavouritesViewModel @Inject constructor(
         getAllFavouriteQuotes()
     }
 
-    private fun getAllFavouriteQuotes() {
+    fun getAllFavouriteQuotes() {
         viewModelScope.launch(dispatcherProvider.io()) {
             repository.getAllFavouriteQuotes().distinctUntilChanged().collectLatest { quotes ->
                 if (quotes.isEmpty()) {

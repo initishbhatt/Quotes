@@ -1,5 +1,7 @@
 package com.quotes.ui.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -12,26 +14,82 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.DismissDirection.EndToStart
+import androidx.compose.material.DismissValue.Default
+import androidx.compose.material.FractionalThreshold
+import androidx.compose.material.Icon
+import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.SwipeToDismiss
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.FormatQuote
+import androidx.compose.material.rememberDismissState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.quotes.R
 import com.quotes.data.model.Quote
+import com.quotes.ui.theme.red800
 
 /**
  * @author nitishbhatt
  */
 @Composable
-fun QuotesView(quotes: List<Quote>, paddingValues: PaddingValues) {
+fun QuotesView(
+    quotes: List<Quote>,
+    paddingValues: PaddingValues,
+    onDismiss: (quote: Quote) -> Unit
+) {
     LazyColumn(contentPadding = paddingValues) {
-        items(quotes) { quote ->
-            QuotesBox(quote = quote)
+        items(quotes, { quoteList -> quoteList.id }) { quote ->
+            val dismissState = rememberDismissState()
+            if (dismissState.isDismissed(EndToStart)) {
+                onDismiss(quote)
+            }
+            SwipeToDismiss(
+                state = dismissState,
+                modifier = Modifier.padding(vertical = 4.dp),
+                directions = setOf(EndToStart),
+                dismissThresholds = { FractionalThreshold(0.25f) },
+                background = {
+                    val color by animateColorAsState(
+                        when (dismissState.targetValue) {
+                            Default -> MaterialTheme.colors.background
+                            else -> red800
+                        }
+                    )
+                    val alignment = Alignment.CenterEnd
+                    val icon = Icons.Default.Delete
+                    val scale by animateFloatAsState(
+                        if (dismissState.targetValue == Default) 0.75f else 1f
+                    )
+                    Box(
+                        Modifier
+                            .fillMaxSize()
+                            .background(color)
+                            .padding(horizontal = 20.dp),
+                        contentAlignment = alignment
+                    ) {
+                        Icon(
+                            icon,
+                            contentDescription = stringResource(R.string.swipe_to_delete),
+                            modifier = Modifier
+                                .scale(scale),
+                            tint = Color.White
+                        )
+                    }
+                },
+                dismissContent = {
+                    ListItem(text = { QuotesBox(quote = quote) })
+                }
+            )
         }
     }
 }
