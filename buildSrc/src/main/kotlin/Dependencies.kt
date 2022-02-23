@@ -67,6 +67,7 @@ object Libs {
             const val rules = "androidx.test:rules:$version"
             const val archCoreTest = "androidx.arch.core:core-testing:2.1.0"
             const val kotlinJunitTest = "org.jetbrains.kotlin:kotlin-test-junit:1.6.0"
+            const val turbine = "app.cash.turbine:turbine:0.7.0"
 
             object Ext {
                 private const val version = "1.1.3"
