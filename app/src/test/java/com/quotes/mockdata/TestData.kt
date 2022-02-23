@@ -17,13 +17,6 @@ object TestData {
                 id = "5a6ce86e2af929789500e7e4"
             )
         )
-        quoteDataList.add(
-            Quote(
-                id = "5a6ce86e2af929789500e7d7",
-                author = "Edsger W. Dijkstra",
-                en = "Simplicity is prerequisite for reliability."
-            )
-        )
         return quoteDataList
     }
 }

@@ -30,7 +30,7 @@ class LocalQuoteRepositoryTest {
     fun `should return list of cities from assets when invoked`() = runTest {
         whenever(assetManagerUseCase.fetchQuotesList("quotes.json"))
             .thenReturn(TestData.getQuotesMockData())
-        val expected = TestData.getQuotesMockData()
+        val expected = TestData.getQuotesMockData().first()
 
         val result = repository.getRandomQuote()
 
