@@ -30,7 +30,7 @@ fun QuotesTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = appTypography,
         shapes = Shapes,
         content = content
     )

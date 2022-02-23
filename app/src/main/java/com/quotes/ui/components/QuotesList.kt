@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Card
 import androidx.compose.material.DismissDirection.EndToStart
 import androidx.compose.material.DismissValue.Default
 import androidx.compose.material.FractionalThreshold
@@ -33,9 +34,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.quotes.R
 import com.quotes.data.model.Quote
+import com.quotes.ui.theme.appTypography
 import com.quotes.ui.theme.red800
 
 /**
@@ -96,39 +99,51 @@ fun QuotesView(
 
 @Composable
 fun QuotesBox(quote: Quote) {
-    Column(
+    Card(
+        backgroundColor = MaterialTheme.colors.secondary,
+        elevation = 4.dp,
+        shape = MaterialTheme.shapes.medium,
         modifier = Modifier
-            .wrapContentSize()
-            .padding(16.dp)
-            .background(MaterialTheme.colors.secondary)
-            .padding(16.dp)
+            .padding(8.dp)
     ) {
-
-        Image(
-            imageVector = Icons.Default.FormatQuote,
-            contentDescription =
-            stringResource(R.string.quote)
-        )
-
-        Text(text = quote.en)
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.CenterEnd
+        Column(
+            modifier = Modifier
+                .wrapContentSize()
+                .padding(8.dp)
         ) {
+
             Image(
                 imageVector = Icons.Default.FormatQuote,
-                contentDescription = "Quote"
+                contentDescription =
+                stringResource(R.string.quote)
             )
-        }
 
-        Box(modifier = Modifier.fillMaxSize()) {
             Text(
-                text = quote.author,
-                modifier = Modifier.align(Alignment.CenterEnd)
+                text = quote.en,
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                textAlign = TextAlign.Justify,
+                style = appTypography.subtitle2
             )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                Image(
+                    imageVector = Icons.Default.FormatQuote,
+                    contentDescription = "Quote"
+                )
+            }
+
+            Box(modifier = Modifier.fillMaxSize()) {
+                Text(
+                    text = "- ${quote.author}",
+                    modifier = Modifier.align(Alignment.CenterEnd),
+                    style = appTypography.caption
+                )
+            }
         }
     }
 }
