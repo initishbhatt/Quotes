@@ -11,9 +11,6 @@ import kotlinx.coroutines.test.setMain
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
-/**
- * @author nitishbhatt
- */
 @ExperimentalCoroutinesApi
 class MainCoroutineRule(
     val testDispatcher: TestDispatcher = StandardTestDispatcher()

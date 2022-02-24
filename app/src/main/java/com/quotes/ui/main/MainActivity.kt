@@ -14,6 +14,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -63,7 +64,7 @@ fun MainLayout() {
                         }
                     }, icon = {
                         Icon(imageVector = item.icon, contentDescription = item.title)
-                    })
+                    }, label = { Text(text = item.title) })
                 }
             }
         }) { paddingValues ->
