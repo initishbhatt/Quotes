@@ -63,6 +63,11 @@ android {
         kotlinCompilerExtensionVersion = Libs.AndroidX.Compose.version
     }
 
+    sourceSets {
+        this.getByName("androidTest").java.srcDirs("src/test-common/java")
+        this.getByName("test").java.srcDirs("src/test-common/java")
+    }
+
 }
 
 dependencies {
@@ -110,6 +115,7 @@ dependencies {
     testImplementation(Libs.AndroidX.Test.turbine)
 
     androidTestImplementation(Libs.AndroidX.Compose.uiTest)
+    debugImplementation(Libs.AndroidX.Compose.uiTestManifest)
     androidTestImplementation(Libs.AndroidX.Test.rules)
     androidTestImplementation(Libs.AndroidX.Test.runner)
     androidTestImplementation(Libs.AndroidX.Test.Ext.junit)

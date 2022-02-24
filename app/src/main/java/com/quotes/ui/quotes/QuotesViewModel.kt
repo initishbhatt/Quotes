@@ -3,7 +3,7 @@ package com.quotes.ui.quotes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.quotes.data.model.Quote
-import com.quotes.data.repository.FavouriteQuotesRepository
+import com.quotes.data.repository.FavouriteQuoteRepository
 import com.quotes.data.repository.QuotesRepository
 import com.quotes.utils.DispatcherProvider
 import com.quotes.utils.Failure
@@ -18,7 +18,7 @@ import timber.log.Timber
 @HiltViewModel
 class QuotesViewModel @Inject constructor(
     private val repository: QuotesRepository,
-    private val favouriteQuotesRepository: FavouriteQuotesRepository,
+    private val favouriteQuotesRepository: FavouriteQuoteRepository,
     private val dispatcherProvider: DispatcherProvider
 ) : ViewModel() {
     private var _quote = MutableStateFlow<QuoteState>(QuoteState.Loading)

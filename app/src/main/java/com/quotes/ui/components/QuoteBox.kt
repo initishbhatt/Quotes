@@ -99,8 +99,6 @@ fun QuoteBox(viewModel: QuotesViewModel, quote: Quote) {
         ) {
 
             RefreshCta { viewModel.getRandomQuote() }
-
         }
     }
 }
-

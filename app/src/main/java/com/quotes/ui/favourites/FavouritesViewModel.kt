@@ -3,7 +3,7 @@ package com.quotes.ui.favourites
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.quotes.data.model.Quote
-import com.quotes.data.repository.FavouriteQuotesRepository
+import com.quotes.data.repository.FavouriteQuoteRepository
 import com.quotes.utils.DispatcherProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class FavouritesViewModel @Inject constructor(
-    private val repository: FavouriteQuotesRepository,
+    private val repository: FavouriteQuoteRepository,
     private val dispatcherProvider: DispatcherProvider
 ) : ViewModel() {
 

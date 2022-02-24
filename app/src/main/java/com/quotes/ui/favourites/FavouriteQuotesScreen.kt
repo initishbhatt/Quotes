@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.quotes.R
 import com.quotes.ui.components.FavouritesEmptyScreen
@@ -25,12 +26,18 @@ fun FavouriteQuotesScreen(viewModel: FavouritesViewModel, paddingValues: Padding
     val favouriteQuoteState by viewModel.favQuote.collectAsState()
 
     when (favouriteQuoteState) {
-        is FavouriteQuotesState.Loading -> ProgressIndicator(modifier = Modifier.visible(true))
+        is FavouriteQuotesState.Loading -> ProgressIndicator(
+            modifier =
+            Modifier.visible(true)
+        )
 
         is FavouriteQuotesState.Success -> {
             Scaffold(
                 topBar = {
-                    TopAppBar(title = { Text(stringResource(R.string.favourites)) })
+                    TopAppBar(
+                        title = { Text(stringResource(R.string.favourites)) },
+                        modifier = Modifier.testTag("Fav")
+                    )
                 }
             ) {
                 QuotesView(
