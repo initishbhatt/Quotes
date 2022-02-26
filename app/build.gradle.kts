@@ -107,6 +107,8 @@ dependencies {
     implementation(Libs.AndroidX.Room.roomKtx)
     kapt(Libs.AndroidX.Room.roomCompiler)
 
+    implementation(Libs.AndroidX.DataStore.dataStore)
+
     testImplementation(Libs.Kotlin.Coroutines.test)
     testImplementation(Libs.AndroidX.Test.kotlinJunitTest)
     testImplementation(Libs.AndroidX.Test.Mockito.mockitoKotlin)

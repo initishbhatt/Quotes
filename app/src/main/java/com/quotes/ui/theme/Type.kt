@@ -39,7 +39,7 @@ private val appFontFamily = FontFamily(
 
 // Set of Material typography styles to start with
 private val defaultTypography = Typography()
-val appTypography = Typography(
+val AppTypography = Typography(
     h1 = defaultTypography.h1.copy(fontFamily = appFontFamily),
     h2 = defaultTypography.h2.copy(fontFamily = appFontFamily),
     h3 = defaultTypography.h3.copy(fontFamily = appFontFamily),

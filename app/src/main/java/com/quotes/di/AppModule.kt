@@ -5,6 +5,7 @@ import android.content.res.AssetManager
 import androidx.room.Room
 import com.quotes.data.db.FavouritesDao
 import com.quotes.data.db.QuotesDatabase
+import com.quotes.data.preference.QuotesPreferenceStore
 import com.quotes.utils.DefaultDispatcherProvider
 import com.quotes.utils.DispatcherProvider
 import dagger.Module
@@ -12,6 +13,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import kotlinx.serialization.json.Json
 
 /**
@@ -44,4 +46,9 @@ object AppModule {
 
     @Provides
     fun provideFavouritesDao(database: QuotesDatabase): FavouritesDao = database.getFavouritesDao()
+
+    @Provides
+    @Singleton
+    fun provideDataStore(@ApplicationContext context: Context): QuotesPreferenceStore =
+        QuotesPreferenceStore(context)
 }

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,7 +21,7 @@ import com.quotes.R
 import com.quotes.ui.theme.AppTypography
 
 @Composable
-fun FavouritesEmptyScreen() {
+fun QuotesErrorScreen(onRetryClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -28,7 +29,7 @@ fun FavouritesEmptyScreen() {
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_empty),
+            painter = painterResource(id = R.drawable.ic_error),
             contentDescription = stringResource(
                 R.string.empty
             ),
@@ -36,17 +37,22 @@ fun FavouritesEmptyScreen() {
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = stringResource(R.string.no_quotes),
+            text = stringResource(R.string.error_occured),
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             style = AppTypography.subtitle2
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = stringResource(R.string.add_quotes),
+            text = stringResource(R.string.try_again),
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             style = AppTypography.caption
         )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = { onRetryClick() }) {
+            Text(text = stringResource(id = R.string.retry))
+        }
     }
 }

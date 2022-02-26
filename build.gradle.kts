@@ -29,7 +29,7 @@ allprojects {
             targetExclude("$buildDir/**/*.kt")
             targetExclude("bin/**/*.kt")
             targetExclude("buildSrc/**/*.kt")
-            ktlint(Libs.ktLintVersion).userData(mapOf("android" to "true"))
+            ktlint(Libs.ktLintVersion).userData(mapOf("android" to "true", "max_line_length" to "130"))
         }
     }
 }

@@ -1,21 +1,27 @@
 package com.quotes.ui.quotes
 
+import androidx.compose.foundation.clickable
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FlashlightOff
+import androidx.compose.material.icons.filled.FlashlightOn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.quotes.ui.components.ProgressIndicator
 import com.quotes.ui.components.QuoteBox
+import com.quotes.ui.components.QuotesErrorScreen
 import com.quotes.ui.components.visible
 
 /**
  * @author nitishbhatt
  */
 @Composable
-fun QuoteScreen(viewModel: QuotesViewModel) {
+fun QuoteScreen(viewModel: QuotesViewModel, toggleTheme: () -> Unit, darkTheme: Boolean) {
 
     val quoteState by viewModel.quote.collectAsState()
 
@@ -24,12 +30,25 @@ fun QuoteScreen(viewModel: QuotesViewModel) {
         is QuoteState.Success -> {
             Scaffold(
                 topBar = {
-                    TopAppBar(title = { Text("Quotes") })
+                    TopAppBar(
+                        title = { Text("Quotes") },
+                        actions = {
+                            val icon =
+                                if (darkTheme) Icons.Default.FlashlightOff else Icons.Default.FlashlightOn
+                            Icon(
+                                imageVector = icon,
+                                contentDescription = "Toggle",
+                                modifier = Modifier.clickable {
+                                    toggleTheme()
+                                }
+                            )
+                        }
+                    )
                 }
             ) {
                 QuoteBox(viewModel = viewModel, quote = (quoteState as QuoteState.Success).quote)
             }
         }
-        is QuoteState.Error -> ProgressIndicator(modifier = Modifier.visible(false))
+        is QuoteState.Error -> QuotesErrorScreen() { viewModel.getRandomQuote() }
     }
 }

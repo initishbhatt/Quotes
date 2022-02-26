@@ -38,8 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.quotes.R
 import com.quotes.data.model.Quote
-import com.quotes.ui.theme.appTypography
-import com.quotes.ui.theme.red800
+import com.quotes.ui.theme.AppTypography
 
 /**
  * @author nitishbhatt
@@ -65,7 +64,7 @@ fun QuotesView(
                     val color by animateColorAsState(
                         when (dismissState.targetValue) {
                             Default -> MaterialTheme.colors.background
-                            else -> red800
+                            else -> MaterialTheme.colors.error
                         }
                     )
                     val alignment = Alignment.CenterEnd
@@ -100,7 +99,7 @@ fun QuotesView(
 @Composable
 fun QuotesBox(quote: Quote) {
     Card(
-        backgroundColor = MaterialTheme.colors.secondary,
+        backgroundColor = MaterialTheme.colors.surface,
         elevation = 4.dp,
         shape = MaterialTheme.shapes.medium,
         modifier = Modifier
@@ -122,7 +121,7 @@ fun QuotesBox(quote: Quote) {
                 text = quote.en,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 textAlign = TextAlign.Justify,
-                style = appTypography.subtitle2
+                style = AppTypography.subtitle2
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -141,7 +140,7 @@ fun QuotesBox(quote: Quote) {
                 Text(
                     text = "- ${quote.author}",
                     modifier = Modifier.align(Alignment.CenterEnd),
-                    style = appTypography.caption
+                    style = AppTypography.caption
                 )
             }
         }

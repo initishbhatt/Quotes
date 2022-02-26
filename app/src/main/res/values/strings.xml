@@ -11,4 +11,6 @@
     <string name="error">error</string>
     <string name="error_text">Something went wrong. Please try again.</string>
     <string name="retry">Retry</string>
+    <string name="error_occured">Something went wrong...</string>
+    <string name="try_again">Please try again.</string>
 </resources>

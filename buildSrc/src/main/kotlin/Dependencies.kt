@@ -36,7 +36,7 @@ object Libs {
 
         object Compose {
             const val snapshot = ""
-            const val version = "1.1.0-rc03"
+            const val version = "1.2.0-alpha04"
 
             const val foundation = "androidx.compose.foundation:foundation:$version"
             const val layout = "androidx.compose.foundation:foundation-layout:$version"
@@ -91,6 +91,10 @@ object Libs {
             val roomKtx = "androidx.room:room-ktx:$roomVersion"
             val runtime = "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
             val commons = "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+        }
+
+        object DataStore {
+            val dataStore = "androidx.datastore:datastore-preferences:1.0.0"
         }
     }
 

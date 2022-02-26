@@ -3,8 +3,8 @@ package com.quotes.ui.components
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -36,7 +36,7 @@ fun RefreshCta(onRefreshButtonClick: () -> Unit) {
         onRefreshButtonClick()
         isRotated.value = !isRotated.value
     }) {
-        Icon(
+        Image(
             painter = painterResource(id = R.drawable.ic_refresh),
             contentDescription = stringResource(R.string.refresh),
             modifier = Modifier
