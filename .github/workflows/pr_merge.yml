@@ -33,10 +33,10 @@ jobs:
         continue-on-error: true
         with:
           path: |
-                  ~/.gradle/caches/modules-*
-                  ~/.gradle/caches/jars-*
-                  ~/.gradle/caches/build-cache-*
-                key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/Dependencies.kt') }}
+            ~/.gradle/caches/modules-*
+            ~/.gradle/caches/jars-*
+            ~/.gradle/caches/build-cache-*
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/Dependencies.kt') }}
 
       - name: Build project
         run: ./gradlew spotlessCheck assembleDebug lintDebug --stacktrace
