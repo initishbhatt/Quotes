@@ -47,6 +47,7 @@ class MainActivityTest {
         composeTestRule.onNodeWithText("Favourites", useUnmergedTree = true)
             .assertIsDisplayed()
             .performClick()
+        composeTestRule.waitForIdle()
         composeTestRule.onNodeWithTag("Fav", useUnmergedTree = true).assertIsDisplayed()
     }
 }
