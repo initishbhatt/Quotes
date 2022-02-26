@@ -1,0 +1,41 @@
+name: Lint
+on: pull_request
+jobs:
+  spotless:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Copy CI gradle.properties
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Fetch Gradle Wrapper Cache
+        uses: actions/cache@v2
+        with:
+         path: ~/.gradle/wrapper
+         key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle-wrapper.properties') }}
+      - name: Fetch Gradle Cache
+        uses: actions/cache@v2
+        continue-on-error: true
+        with:
+          path: |
+            ~/.gradle/caches/modules-*
+            ~/.gradle/caches/jars-*
+            ~/.gradle/caches/build-cache-*
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/Dependencies.kt') }}
+
+      - name: Run Spotless
+        run: ./gradlew spotlessCheck lintDebug --stacktrace
+
+      - name: Lint results
+        uses: actions/upload-artifact@v1
+        with:
+          name: app
+          path: app/build/reports/lint-results-debug.html
