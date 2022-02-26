@@ -1,3 +1,6 @@
+<p align="center">
+<img src="/art/logo.png" width="33%"/>
+</p>
 <h1 align="center">Quotes</h1>
 
 <p align="center">
@@ -5,7 +8,8 @@
   <a href="https://developer.android.com/reference"><img alt="Android" src="https://img.shields.io/badge/Platform-android-brightgreen"/></a>
   <a href="https://androidstudio.googleblog.com/2022/01/android-studio-dolphin-canary-1-now.html"><img alt="Android Studio Dolphin" src="https://img.shields.io/badge/Android%20Studio-Dolphin-yellow"/></a>
 
-Quotes app build to demonstrate some of the general use cases and demands on a typical production project using: <b>Jetpack Compose</b>, <b>Functional Programming</b>,<b>MVVM</b>, <b>Kotlin Coroutines</b> and <b>Kotlin Flows</b>.
+Quotes app demonstrates some of the general use cases and demands on a typical production project using: <b>Jetpack Compose</b>, <b>Functional Programming</b>,<b>MVVM</b>, <b>Kotlin Coroutines</b>,<b>Flow</b>,
+<b>Jetpack (Room, ViewModel)</b>, and <b>Material Design based on MVVM architecture</b>.
 
 <p align="center">
 <img src="/art/Quotes.png"/>
@@ -45,6 +49,18 @@ Quotes app build to demonstrate some of the general use cases and demands on a t
 The app uses [***MVVM(Model View ViewModel)***](https://developer.android.com/jetpack/guide#recommended-app-arch)
 
 ![](https://developer.android.com/topic/libraries/architecture/images/mad-arch-overview.png)
+
+## MAD Scorecard
+![summary](https://user-images.githubusercontent.com/16473147/155850920-267f53c6-db91-49cb-a15c-fcbd3ef891a6.png)
+![jetpack](https://user-images.githubusercontent.com/16473147/155850916-9a65907c-e844-499d-ada1-5c46fd9c239d.png)
+![kotlin](https://user-images.githubusercontent.com/16473147/155850918-ae1cfd50-7b8b-47fd-96e2-b2cd1e008a56.png)
+
+## Want to contribute
+You can create [issues](https://github.com/initishbhatt/quotes/issues) or [pull requests](https://github.com/initishbhatt/quotes/pulls) to contribute this project
+
+## Find this repository useful? :heart:
+Support it by joining __[stargazers](https://github.com/initishbhatt/Quotes/stargazers)__ for this repository. :star: <br>
+Also, __[follow me](https://github.com/initishbhatt)__ on GitHub for my next creations! 🤩
 
 ## License 🔖
 ```
