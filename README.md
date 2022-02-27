@@ -48,7 +48,7 @@ Quotes app demonstrates some of the general use cases and demands on a typical p
 ## Architecture 🗼
 The app uses [***MVVM(Model View ViewModel)***](https://developer.android.com/jetpack/guide#recommended-app-arch)
 
-![](https://developer.android.com/topic/libraries/architecture/images/mad-arch-overview.png)
+![App Architecture](https://user-images.githubusercontent.com/16473147/155868677-d4131e25-872f-45b7-bdb0-6f164d13262e.png)
 
 ## MAD Scorecard
 ![summary](https://user-images.githubusercontent.com/16473147/155850920-267f53c6-db91-49cb-a15c-fcbd3ef891a6.png)
