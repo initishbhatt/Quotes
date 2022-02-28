@@ -4,9 +4,9 @@
 
 object ReleaseConfig {
 
-    const val major = 0
+    const val major = 1
     const val minor = 0
-    const val patch = 1
+    const val patch = 0
 
     val appVersionName = getVersionName()
 
