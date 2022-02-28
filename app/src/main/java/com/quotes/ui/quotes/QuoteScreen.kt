@@ -10,7 +10,6 @@ import androidx.compose.material.icons.filled.FlashlightOff
 import androidx.compose.material.icons.filled.FlashlightOn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.quotes.ui.components.ProgressIndicator
 import com.quotes.ui.components.QuoteBox
@@ -23,9 +22,7 @@ import com.quotes.ui.components.visible
 @Composable
 fun QuoteScreen(viewModel: QuotesViewModel, toggleTheme: () -> Unit, darkTheme: Boolean) {
 
-    val quoteState by viewModel.quote.collectAsState()
-
-    when (quoteState) {
+    when (val quoteState = viewModel.quote.collectAsState().value) {
         is QuoteState.Loading -> ProgressIndicator(modifier = Modifier.visible(true))
         is QuoteState.Success -> {
             Scaffold(
@@ -46,7 +43,7 @@ fun QuoteScreen(viewModel: QuotesViewModel, toggleTheme: () -> Unit, darkTheme: 
                     )
                 }
             ) {
-                QuoteBox(viewModel = viewModel, quote = (quoteState as QuoteState.Success).quote)
+                QuoteBox(viewModel = viewModel, quote = quoteState.quote)
             }
         }
         is QuoteState.Error -> QuotesErrorScreen() { viewModel.getRandomQuote() }

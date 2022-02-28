@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -23,7 +24,7 @@ class QuotesViewModel @Inject constructor(
 ) : ViewModel() {
     private var _quote = MutableStateFlow<QuoteState>(QuoteState.Loading)
 
-    val quote: StateFlow<QuoteState> = _quote
+    val quote: StateFlow<QuoteState> = _quote.asStateFlow()
 
     init {
         getRandomQuote()
