@@ -6,7 +6,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -23,14 +22,12 @@ import com.quotes.ui.components.visible
 @Composable
 fun FavouriteQuotesScreen(viewModel: FavouritesViewModel, paddingValues: PaddingValues) {
 
-    val favouriteQuoteState by viewModel.favQuote.collectAsState()
-
-    when (favouriteQuoteState) {
+    when (val favouriteQuoteState = viewModel.favQuote.collectAsState().value) {
         is FavouriteQuotesState.Loading -> ProgressIndicator(
             modifier =
             Modifier.visible(true)
         )
-
+        is FavouriteQuotesState.Empty -> FavouritesEmptyScreen()
         is FavouriteQuotesState.Success -> {
             Scaffold(
                 topBar = {
@@ -41,13 +38,12 @@ fun FavouriteQuotesScreen(viewModel: FavouritesViewModel, paddingValues: Padding
                 }
             ) {
                 QuotesView(
-                    quotes = (favouriteQuoteState as FavouriteQuotesState.Success).quotes,
+                    quotes = favouriteQuoteState.quotes,
                     paddingValues = paddingValues,
                     onDismiss = { viewModel.deleteQuote(it) }
                 )
             }
         }
-        is FavouriteQuotesState.Empty -> FavouritesEmptyScreen()
         is FavouriteQuotesState.Error -> FavouritesErrorScreen { viewModel.getAllFavouriteQuotes() }
     }
 }

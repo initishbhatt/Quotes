@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class FavouritesViewModel @Inject constructor(
 
     private var _favQuote = MutableStateFlow<FavouriteQuotesState>(FavouriteQuotesState.Loading)
 
-    val favQuote: StateFlow<FavouriteQuotesState> = _favQuote
+    val favQuote: StateFlow<FavouriteQuotesState> = _favQuote.asStateFlow()
 
     init {
         getAllFavouriteQuotes()
